@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Desafio da turma e porcentagem feminina</title>
+</head>
+<body>
+    
+    <label>Digite o tamanho da turma</label>
+    <input type="number" id="turma_tamanho"><br>
+
+    <label>Digite o número de pessoas do sexo masculino</label>
+    <input type="number" id="turma_masculino"><br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+
+    <script>
+        function calcular(){
+            turma_tamanho = parseInt(document.getElementById("turma_tamanho").value);
+            turma_masculino = parseInt(document.getElementById("turma_masculino").value);
+            resultado = document.getElementById("resultado");
+
+            if(isNaN(turma_masculino) || isNaN(turma_tamanho)){
+                alert("Preencha todos os campos");
+                return false;
+            }
+
+            if(turma_masculino > turma_tamanho){
+                alert("Há mais alunos do que o tamanho da turma permite");
+                return false;
+            }
+
+            calculo_porcentagem_masculina = (turma_masculino * 100) / turma_tamanho;
+            calculo_porcentagem_feminina = 100 - calculo_porcentagem_masculina
+
+            resultado.innerText = `Nesta sala, ${calculo_porcentagem_feminina}% são do sexo feminino e ${calculo_porcentagem_masculina}% são do sexo masculino.`
+        }
+    </script>
+</body>
+</html>
